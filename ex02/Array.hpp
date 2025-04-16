@@ -14,12 +14,13 @@ class   Array {
         ~Array( void );
         Array&  operator=( const Array& copy );
         T&      operator[]( int index );
+        unsigned int    size(void);
     
     public:
         T   *arr;
     
     private:
-        unsigned int    size;
+        unsigned int    _elCount;
 };
 
 // Include the implementations of the class members

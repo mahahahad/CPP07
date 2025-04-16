@@ -6,7 +6,7 @@ template <typename T>
 Array<T>::Array(void) {
     std::cout << "Constructor for Array called!" << std::endl;
 
-    size = 0;
+    _elCount = 0;
     arr = new T[0];
 }
 
@@ -17,7 +17,7 @@ Array<T>::Array(void) {
 template <typename T>
 Array<T>::Array(unsigned int elCount) {
     arr = new T[elCount];
-    size = elCount;
+    _elCount = elCount;
 
     std::cout << "Constructor for Array (with element count) called!"
         << std::endl;
@@ -52,7 +52,7 @@ Array<T>&  Array<T>::operator=(const Array& copy) {
  */
 template <typename T>
 T&  Array<T>::operator[](int index) {
-    if (index < 0 || static_cast<unsigned int>(index) == size)
+    if (index < 0 || static_cast<unsigned int>(index) == _elCount)
         throw std::exception();
 
     return (arr[index]);
@@ -67,4 +67,13 @@ Array<T>::~Array(void) {
     delete [] arr;
     std::cout << "Destructor for Array called!"
         << std::endl;
+}
+
+/**
+ * Size member function
+ * Returns the number of elements in the array 
+ */
+template <typename T>
+unsigned int    Array<T>::size(void) {
+    return (_elCount);
 }
