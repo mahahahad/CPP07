@@ -1,13 +1,20 @@
+#include "Array.hpp"
+
+template <typename T>
+const char* Array<T>::IndexOutOfBoundsException::what() const throw() {
+    return ("The specified index is out of bounds");
+}
+
 /**
  * Default constructor
  * Creates an empty array
  */
 template <typename T>
 Array<T>::Array(void) {
-    std::cout << "Constructor for Array called!" << std::endl;
-
-    _elCount = 0;
     arr = new T[0];
+    _elCount = 0;
+    
+    // std::cout << "Constructor for Array called!" << std::endl;
 }
 
 /**
@@ -19,8 +26,8 @@ Array<T>::Array(unsigned int elCount) {
     arr = new T[elCount];
     _elCount = elCount;
 
-    std::cout << "Constructor for Array (with element count) called!"
-        << std::endl;
+    // std::cout << "Constructor for Array (with element count) called!"
+    //     << std::endl;
 }
 
 /**
@@ -29,9 +36,14 @@ Array<T>::Array(unsigned int elCount) {
  */
 template <typename T>
 Array<T>::Array(const Array& copy) { 
-    (void) copy;
-    std::cout << "Copy constructor called!"
-        << std::endl;
+    arr = new T[copy.size()];
+    _elCount = copy.size();
+    for (unsigned int i = 0; i < copy.size(); i++) {
+        arr[i] = copy.arr[i];
+    }
+
+    // std::cout << "Copy constructor called!"
+    //     << std::endl;
 }
 
 /**
@@ -40,9 +52,14 @@ Array<T>::Array(const Array& copy) {
  */
 template <typename T>
 Array<T>&  Array<T>::operator=(const Array& copy) { 
-    (void) copy;
-    std::cout << "Copy constructor called!"
-        << std::endl;
+    arr = new T[copy.size()];
+    _elCount = copy.size();
+    for (unsigned int i = 0; i < copy.size(); i++) {
+        arr[i] = copy.arr[i];
+    }
+
+    // std::cout << "Copy constructor called!"
+    //     << std::endl;
     return (*this);
 }
 
@@ -53,7 +70,7 @@ Array<T>&  Array<T>::operator=(const Array& copy) {
 template <typename T>
 T&  Array<T>::operator[](int index) {
     if (index < 0 || static_cast<unsigned int>(index) == _elCount)
-        throw std::exception();
+        throw Array<T>::IndexOutOfBoundsException();
 
     return (arr[index]);
 }
@@ -65,8 +82,8 @@ T&  Array<T>::operator[](int index) {
 template <typename T>
 Array<T>::~Array(void) { 
     delete [] arr;
-    std::cout << "Destructor for Array called!"
-        << std::endl;
+    // std::cout << "Destructor for Array called!"
+    //     << std::endl;
 }
 
 /**
@@ -74,6 +91,17 @@ Array<T>::~Array(void) {
  * Returns the number of elements in the array 
  */
 template <typename T>
-unsigned int    Array<T>::size(void) {
+unsigned int    Array<T>::size(void) const {
     return (_elCount);
+}
+
+/**
+ * Print member function (utility)
+ * Prints all the elements in the array
+ */
+template <typename T>
+void    Array<T>::print(void) const {
+    for (unsigned int i = 0; i < _elCount; i++) {
+        std::cout << arr[i] << (i == _elCount - 1 ? "\n" : ", ");
+    }
 }

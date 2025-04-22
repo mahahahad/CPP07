@@ -14,7 +14,14 @@ class   Array {
         ~Array( void );
         Array&  operator=( const Array& copy );
         T&      operator[]( int index );
-        unsigned int    size(void);
+        unsigned int    size( void ) const;
+        void    print( void ) const;
+
+    public: 
+        class   IndexOutOfBoundsException: public std::exception {
+            public:
+                virtual const char  *what( void ) const throw();
+        };
     
     public:
         T   *arr;
