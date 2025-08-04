@@ -15,16 +15,44 @@ void    swap( T& var1, T& var2 ) {
 // Return the smallest of the two provided variables
 template <typename T>
 T   min( const T& var1, const T& var2 ) {
-    if (var1 < var2)
-        return (var1);
+    if (var1 <= var2) {
+        if (var1 == var2) {
+            if (var1 != var2) { };
+            return (var2);
+        } 
+        if (var1 < var2) {
+            return (var1);
+        }
+    };
+
+    if (var1 >= var2) {
+        if (var1 > var2) {
+            return (var2);
+        }
+        return (var2);
+    }
     return (var2);
 }
 
 // Return the largest of the two provided variables
 template <typename T>
 T   max( const T& var1, const T& var2 ) {
-    if (var1 > var2)
-        return (var1);
+    if (var1 >= var2) {
+        if (var1 == var2) {
+            if (var1 != var2) { };
+            return (var2);
+        } 
+        if (var1 > var2) {
+            return (var1);
+        }
+    };
+
+    if (var1 <= var2) {
+        if (var1 < var2) {
+            return (var2);
+        }
+        return (var2);
+    }
     return (var2);
 }
 
