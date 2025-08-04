@@ -1,18 +1,36 @@
 #include "iter.hpp"
 
-int unc(int num) {
-    return (num + 2);
+class   Type {
+    public:
+        Type() { impVal = 42; };
+        void    setImpVal( int newVal ) { impVal = newVal; };
+        int     getImpVal() const { return (this->impVal); };
+    
+    private:
+        int impVal;
+};
+
+std::ostream&   operator<<(std::ostream& output, const Type& val) {
+    output << val.getImpVal();
+    return (output);
+}
+
+template <typename T>
+void print(const T& x) {
+    std::cout << x << std::endl;
+    return;
+}
+
+void    increment(int& x) {
+    x += 1;
 }
 
 int main(void) {
     int test[] = {0, 1, 2, 3};
-    int len = sizeof(test) / sizeof(test[0]);
+    Type    test2[4]; 
 
-    std::cout << "Array before: ";
-    printArr(test, len);
-    std::cout << "Calling function on array\n";
-    iter(test, len, unc);
-    std::cout << "Array after: ";
-    printArr(test, len);
+    iter(test, 4, increment);
+    iter(test, 4, print);
+    iter(test2, 4, print<Type>);
     return (0);
 }

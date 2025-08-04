@@ -10,10 +10,17 @@ void    printArr( const T* arr, int len ) {
     }
 }
 
-template <typename T, typename Function>
-void    iter( T* arr, int len, const Function& fn ) {
+template <typename T>
+void    iter( T* arr, int len, void (*fn)(T&) ) {
     for (int i = 0; i < len; i++) {
-        arr[i] = fn(arr[i]);
+        fn(arr[i]);
+    }
+}
+
+template <typename T>
+void    iter( T* arr, int len, void (*fn)(const T&) ) {
+    for (int i = 0; i < len; i++) {
+        fn(arr[i]);
     }
 }
 
