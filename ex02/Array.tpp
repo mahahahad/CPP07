@@ -62,6 +62,7 @@ Array<T>&  Array<T>::operator=(const Array& copy) {
     //     << std::endl;
     return (*this);
 }
+ */
 
 /**
  * Subscript operator

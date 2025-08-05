@@ -14,6 +14,7 @@ class   Array {
         ~Array();
         Array&  operator=( const Array& copy );
         T&      operator[]( int index );
+        const T&      operator[]( int index ) const;
         unsigned int    size() const;
         void    print() const;
 
