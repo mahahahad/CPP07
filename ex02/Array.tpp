@@ -81,7 +81,7 @@ const T&  Array<T>::operator[](int index) const {
  */
 template <typename T>
 T&  Array<T>::operator[](int index) {
-    if (index < 0 || static_cast<unsigned int>(index) == _elCount)
+    if (index < 0 || static_cast<unsigned int>(index) >= _elCount)
         throw Array<T>::IndexOutOfBoundsException();
 
     return (arr[index]);
