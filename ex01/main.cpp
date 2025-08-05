@@ -31,6 +31,6 @@ int main() {
 
     iter(test, 4, increment);
     iter(test, 4, print);
-    iter(test2, 4, print<Type>);
+    iter(test2, 4, print);
     return (0);
 }
