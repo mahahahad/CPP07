@@ -62,7 +62,18 @@ Array<T>&  Array<T>::operator=(const Array& copy) {
     //     << std::endl;
     return (*this);
 }
+
+/**
+ * Constant Subscript operator
+ * Allows users to read-only access elements of the array with the provided index
  */
+template <typename T>
+const T&  Array<T>::operator[](int index) const {
+    if (index < 0 || static_cast<unsigned int>(index) >= _elCount)
+        throw Array<T>::IndexOutOfBoundsException();
+
+    return (arr[index]);
+}
 
 /**
  * Subscript operator
