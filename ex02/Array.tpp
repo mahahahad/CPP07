@@ -10,7 +10,7 @@ const char* Array<T>::IndexOutOfBoundsException::what() const throw() {
  * Creates an empty array
  */
 template <typename T>
-Array<T>::Array(void) {
+Array<T>::Array() {
     arr = new T[0];
     _elCount = 0;
     
@@ -92,7 +92,7 @@ T&  Array<T>::operator[](int index) {
  * Destroys the array
  */
 template <typename T>
-Array<T>::~Array(void) { 
+Array<T>::~Array() { 
     delete [] arr;
     // std::cout << "Destructor for Array called!"
     //     << std::endl;
@@ -103,7 +103,7 @@ Array<T>::~Array(void) {
  * Returns the number of elements in the array 
  */
 template <typename T>
-unsigned int    Array<T>::size(void) const {
+unsigned int    Array<T>::size() const {
     return (_elCount);
 }
 
@@ -112,7 +112,7 @@ unsigned int    Array<T>::size(void) const {
  * Prints all the elements in the array
  */
 template <typename T>
-void    Array<T>::print(void) const {
+void    Array<T>::print() const {
     for (unsigned int i = 0; i < _elCount; i++) {
         std::cout << arr[i] << (i == _elCount - 1 ? "\n" : ", ");
     }

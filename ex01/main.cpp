@@ -25,7 +25,7 @@ void    increment(int& x) {
     x += 1;
 }
 
-int main(void) {
+int main() {
     int test[] = {0, 1, 2, 3};
     Type    test2[4]; 
 
