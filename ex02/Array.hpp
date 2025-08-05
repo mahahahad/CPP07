@@ -8,19 +8,19 @@
 template <typename T>
 class   Array {
     public:
-        Array( void );
+        Array();
         Array( unsigned int size );
         Array( const Array& copy );
-        ~Array( void );
+        ~Array();
         Array&  operator=( const Array& copy );
         T&      operator[]( int index );
-        unsigned int    size( void ) const;
-        void    print( void ) const;
+        unsigned int    size() const;
+        void    print() const;
 
     public: 
         class   IndexOutOfBoundsException: public std::exception {
             public:
-                virtual const char  *what( void ) const throw();
+                virtual const char  *what() const throw();
         };
     
     public:
